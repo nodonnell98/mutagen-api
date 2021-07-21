@@ -23,4 +23,4 @@ RUN gem install bundler:'~> 2.1.4'
 
 RUN bundle
 
-CMD rails server -b 0.0.0.0
+CMD ./docker-entrypoint.sh
