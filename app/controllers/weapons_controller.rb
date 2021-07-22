@@ -15,6 +15,7 @@ class WeaponsController < ApplicationController
 
   # POST /weapons
   def create
+    raise params
     @weapon = Weapon.new(weapon_params)
 
     if @weapon.save
@@ -46,6 +47,6 @@ class WeaponsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def weapon_params
-      params.require(:weapon).permit(:name, :type, :description, :range, :quality, :dice_type, :dice_qty, :proficiency, :ammo, :damage_type)
+      params.require(:weapon).permit(:name, :weapon_type, :description, :range, :quality, :dice_type, :dice_qty, :proficiency, :ammo, :damage_type)
     end
 end
