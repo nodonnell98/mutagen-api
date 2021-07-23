@@ -1,6 +1,6 @@
 # Dockerfile
 
-FROM ruby:2.7
+FROM ruby:3.0.1
 
 # Install nodejs
 RUN apt-get update -qq && apt-get install -y nodejs
