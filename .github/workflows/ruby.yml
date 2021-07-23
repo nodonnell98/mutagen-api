@@ -1,4 +1,4 @@
-name: Run specs on PR
+name: Run tests
 
 on:
   pull_request:
@@ -16,7 +16,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - name: Run tests using docker-compose
+      - name: Test using docker-compose and rspec
         run: |
           docker-compose run web bin/rails db:create
           docker-compose up -d db
