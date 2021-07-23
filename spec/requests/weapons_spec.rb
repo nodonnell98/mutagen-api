@@ -13,8 +13,6 @@ RSpec.describe "Weapons", type: :request do
 
   describe 'POST /create' do
     it 'is successful with valid params' do
-      # send a POST request to /weapon, with these parameters
-      # The controller will treat them as JSON
       post '/weapons', params: {
         weapon: {
           name: "Widowmaker",
@@ -36,8 +34,6 @@ RSpec.describe "Weapons", type: :request do
     end
 
     it 'is unsuccessful with invalid params' do
-      # send a POST request to /weapon, with these parameters
-      # The controller will treat them as JSON
       post '/weapons', params: {
         weapon: {
           name: 24,
