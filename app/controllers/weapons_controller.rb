@@ -15,7 +15,6 @@ class WeaponsController < ApplicationController
 
   # POST /weapons
   def create
-    raise params
     @weapon = Weapon.new(weapon_params)
 
     if @weapon.save
