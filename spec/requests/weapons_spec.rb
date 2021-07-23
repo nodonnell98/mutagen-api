@@ -5,9 +5,18 @@ RSpec.describe "Weapons", type: :request do
 
   describe "GET /index" do
     it 'correctly gets request' do
-      get weapons_url(), as: :json
+      get '/weapons', as: :json
 
       expect(response).to be_successful
+    end
+  end
+
+  describe "GET /show" do
+    it 'correctly gets request for individual weapon' do
+      get '/weapons/' + weapon.id.to_s, as: :json
+
+      expect(response).to be_successful
+      expect(response.body).to include(weapon.name)
     end
   end
 
