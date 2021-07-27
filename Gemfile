@@ -34,6 +34,7 @@ gem 'rspec-collection_matchers', '~> 1.2'
 gem 'rack-cors', '~> 1.1', '>= 1.1.1'
 gem 'devise', '~> 4.8'
 gem 'jwt', '~> 2.2', '>= 2.2.3'
+gem 'rails_same_site_cookie', '~> 0.1.8'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
