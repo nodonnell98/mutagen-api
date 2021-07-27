@@ -28,6 +28,7 @@ services:
       RACK_ENV: development
       POSTGRES_USER: rails
       POSTGRES_PASSWORD: secret123
+      WEB_APP_URL: http://localhost:3001
     volumes:
       - .:/usr/src/app
     depends_on:
