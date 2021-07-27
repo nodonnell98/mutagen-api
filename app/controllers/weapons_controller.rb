@@ -1,4 +1,4 @@
-class WeaponsController < ApplicationController
+class WeaponsController < ApiController
   before_action :set_weapon, only: [:show, :update, :destroy]
 
   # GET /weapons
