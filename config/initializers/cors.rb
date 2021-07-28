@@ -10,8 +10,8 @@ Rails.application.config.middleware.insert_before 0, Rack::Cors do
     origins ENV['WEB_APP_URL']
 
     resource '*',
-    headers: :any,
-    credentials: true,
-    methods: [:get, :post, :put, :patch, :delete, :options, :head]
+             headers: :any,
+             credentials: true,
+             methods: %i[get post put patch delete options head]
   end
 end
