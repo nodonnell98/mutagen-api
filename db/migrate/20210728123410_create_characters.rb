@@ -30,7 +30,7 @@ class CreateCharacters < ActiveRecord::Migration[6.0]
 
       # Skills
       t.integer :athletics, default: 0
-      t.integer :intimidation, default: 0
+      t.integer :intimidation_STR, default: 0
       t.integer :force, default: 0
       t.integer :acrobatics, default: 0
       t.integer :precision, default: 0
@@ -42,6 +42,9 @@ class CreateCharacters < ActiveRecord::Migration[6.0]
       t.integer :investigation, default: 0
       t.integer :perception, default: 0
       t.integer :insight, default: 0
+      t.integer :persuasion, default: 0
+      t.integer :deception, default: 0
+      t.integer :intimidation_CHA, default: 0
       t.integer :melee, default: 0
       t.integer :short_range, default: 0
       t.integer :medium_range, default: 0
