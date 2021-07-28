@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   scope :api, defaults: {format: :json} do
     scope :v1 do
       devise_for :users, controllers: { sessions: :sessions, registrations: :registrations },
@@ -8,6 +9,7 @@ Rails.application.routes.draw do
 
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
+      resources :characters
       resources :weapons, only: [:index, :show, :create, :update, :destroy, :post]
       resources :users, only: %i[show update]
     end
