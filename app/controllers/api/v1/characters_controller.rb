@@ -8,7 +8,7 @@ module Api
       # GET /characters
       # GET /characters.json
       def index
-        @characters = Character.all
+        @characters = current_user.characters.all
       end
 
       # GET /characters/1
@@ -52,7 +52,7 @@ module Api
 
       # Only allow a list of trusted parameters through.
       def character_params
-        params.fetch(:character, {})
+        params.require(:weapon).permit(:user, :name, :description)
       end
     end
   end
