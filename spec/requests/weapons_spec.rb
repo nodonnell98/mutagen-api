@@ -6,7 +6,7 @@ RSpec.describe "Weapons", type: :request do
 
   describe "GET /index" do
     it 'will not succeed if not signed in' do
-      get '/weapons', as: :json
+      get '/api/v1/weapons', as: :json
 
       expect(response).to be_unauthorized
       expect(response.body).to include('Not Authenticated')
@@ -18,7 +18,7 @@ RSpec.describe "Weapons", type: :request do
       end
 
       it 'correctly gets request' do
-        get '/weapons', as: :json
+        get '/api/v1/weapons', as: :json
 
         expect(response).to be_successful
       end
@@ -27,7 +27,7 @@ RSpec.describe "Weapons", type: :request do
 
   describe "GET /show" do
     it 'will not succeed if not signed in' do
-      get '/weapons/' + weapon.id.to_s, as: :json
+      get '/api/v1/weapons/' + weapon.id.to_s, as: :json
 
       expect(response).to be_unauthorized
       expect(response.body).to include('Not Authenticated')
@@ -39,7 +39,7 @@ RSpec.describe "Weapons", type: :request do
       end
 
       it 'correctly gets request for individual weapon' do
-        get '/weapons/' + weapon.id.to_s, as: :json
+        get '/api/v1/weapons/' + weapon.id.to_s, as: :json
 
         expect(response).to be_successful
         expect(response.body).to include(weapon.name)
@@ -49,7 +49,7 @@ RSpec.describe "Weapons", type: :request do
 
   describe 'POST /create' do
     it 'will not succeed if not signed in' do
-      post '/weapons', params: {
+      post '/api/v1/weapons', params: {
         weapon: {
           name: "Widowmaker",
           weapon_type: "Sniper",
@@ -74,7 +74,7 @@ RSpec.describe "Weapons", type: :request do
       end
 
       it 'is successful with valid params' do
-        post '/weapons', params: {
+        post '/api/v1/weapons', params: {
           weapon: {
             name: "Widowmaker",
             weapon_type: "Sniper",
@@ -95,7 +95,7 @@ RSpec.describe "Weapons", type: :request do
       end
 
       it 'is unsuccessful with invalid params' do
-        post '/weapons', params: {
+        post '/api/v1/weapons', params: {
           weapon: {
             name: 24,
             weapon_type: nil,
@@ -119,7 +119,7 @@ RSpec.describe "Weapons", type: :request do
 
   describe "PUT /update" do
     it 'will not succeed if not signed in' do
-      put '/weapons/' + weapon.id.to_s,  params: {
+      put '/api/v1/weapons/' + weapon.id.to_s,  params: {
         weapon: {
           name: "Edited Gun"
         }
@@ -135,7 +135,7 @@ RSpec.describe "Weapons", type: :request do
       end
 
       it 'successfully edits weapon with valid changes' do
-        weapon_url = '/weapons/' + weapon.id.to_s
+        weapon_url = '/api/v1/weapons/' + weapon.id.to_s
 
         expect(Weapon.count).to eq(1)
         expect(Weapon.last.name).to eq('Gun')
@@ -152,7 +152,7 @@ RSpec.describe "Weapons", type: :request do
       end
 
       it 'will not edit weapon with invalid changes' do
-        weapon_url = '/weapons/' + weapon.id.to_s
+        weapon_url = '/api/v1/weapons/' + weapon.id.to_s
 
         expect(Weapon.count).to eq(1)
         expect(Weapon.last.name).to eq('Gun')
@@ -173,7 +173,7 @@ RSpec.describe "Weapons", type: :request do
     let!(:weapon2) { FactoryBot.create(:weapon, name: 'DeleteMe')}
 
     it 'will not succeed if not signed in' do
-      delete '/weapons/' + weapon2.id.to_s, as: :json
+      delete '/api/v1/weapons/' + weapon2.id.to_s, as: :json
 
       expect(response).to be_unauthorized
       expect(response.body).to include('Not Authenticated')
@@ -189,7 +189,7 @@ RSpec.describe "Weapons", type: :request do
         expect(Weapon.last.name).to eq('DeleteMe')
         expect(Weapon.count).to eq(2)
 
-        weapon_url = '/weapons/' + weapon2.id.to_s
+        weapon_url = '/api/v1/weapons/' + weapon2.id.to_s
         delete weapon_url, as: :json
 
         expect(response.status).to eq(204)
