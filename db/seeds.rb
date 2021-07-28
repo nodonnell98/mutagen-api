@@ -8,8 +8,11 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-user = User.create(email: 'admin@example.com', password: 'SuperSecret123!', password_confirmation: 'SuperSecret123!',
+user1 = User.create(email: 'admin@example.com', password: 'SuperSecret123!', password_confirmation: 'SuperSecret123!',
                    username: 'Admin123')
+
+user2 = User.create(email: 'user@example.com', password: 'SuperSecret123!', password_confirmation: 'SuperSecret123!',
+username: 'Admin123')
 
 Weapon.create(name: 'Glock', weapon_type: 'Pistol', description: 'A basic pistol', range: '20', quality: 'common',
               dice_type: '4', dice_qty: '2', damage_type: 'kinetic', ammo: '3', proficiency: '2')
@@ -20,4 +23,5 @@ Weapon.create(name: 'Stun gun', weapon_type: 'Pistol', description: 'A non-letha
 Weapon.create(name: 'Widowmaker', weapon_type: 'Sniper', description: 'A deadly sniper', range: '200', quality: 'rare',
               dice_type: '4', dice_qty: '2', damage_type: 'kinetic', ammo: '3', proficiency: '2')
 
-Character.create(name: 'Steve', description: 'A regular guy', user: user)
+Character.create(name: 'Steve', description: 'A regular guy', user: user1)
+Character.create(name: 'Melissa', description: 'A regular gal', user: user2)
