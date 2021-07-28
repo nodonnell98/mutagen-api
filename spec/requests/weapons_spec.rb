@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe 'Weapons', type: :request do
@@ -27,7 +29,7 @@ RSpec.describe 'Weapons', type: :request do
 
   describe 'GET /show' do
     it 'will not succeed if not signed in' do
-      get '/api/v1/weapons/' + weapon.id.to_s, as: :json
+      get "/api/v1/weapons/#{weapon.id}", as: :json
 
       expect(response).to be_unauthorized
       expect(response.body).to include('Not Authenticated')
@@ -39,7 +41,7 @@ RSpec.describe 'Weapons', type: :request do
       end
 
       it 'correctly gets request for individual weapon' do
-        get '/api/v1/weapons/' + weapon.id.to_s, as: :json
+        get "/api/v1/weapons/#{weapon.id}", as: :json
 
         expect(response).to be_successful
         expect(response.body).to include(weapon.name)
@@ -119,7 +121,7 @@ RSpec.describe 'Weapons', type: :request do
 
   describe 'PUT /update' do
     it 'will not succeed if not signed in' do
-      put '/api/v1/weapons/' + weapon.id.to_s, params: {
+      put "/api/v1/weapons/#{weapon.id}", params: {
         weapon: {
           name: 'Edited Gun'
         }
@@ -135,7 +137,7 @@ RSpec.describe 'Weapons', type: :request do
       end
 
       it 'successfully edits weapon with valid changes' do
-        weapon_url = '/api/v1/weapons/' + weapon.id.to_s
+        weapon_url = "/api/v1/weapons/#{weapon.id}"
 
         expect(Weapon.count).to eq(1)
         expect(Weapon.last.name).to eq('Gun')
@@ -152,7 +154,7 @@ RSpec.describe 'Weapons', type: :request do
       end
 
       it 'will not edit weapon with invalid changes' do
-        weapon_url = '/api/v1/weapons/' + weapon.id.to_s
+        weapon_url = "/api/v1/weapons/#{weapon.id}"
 
         expect(Weapon.count).to eq(1)
         expect(Weapon.last.name).to eq('Gun')
@@ -173,7 +175,7 @@ RSpec.describe 'Weapons', type: :request do
     let!(:weapon2) { FactoryBot.create(:weapon, name: 'DeleteMe') }
 
     it 'will not succeed if not signed in' do
-      delete '/api/v1/weapons/' + weapon2.id.to_s, as: :json
+      delete "/api/v1/weapons/#{weapon2.id}", as: :json
 
       expect(response).to be_unauthorized
       expect(response.body).to include('Not Authenticated')
@@ -188,7 +190,7 @@ RSpec.describe 'Weapons', type: :request do
         expect(Weapon.last.name).to eq('DeleteMe')
         expect(Weapon.count).to eq(2)
 
-        weapon_url = '/api/v1/weapons/' + weapon2.id.to_s
+        weapon_url = "/api/v1/weapons/#{weapon2.id}"
         delete weapon_url, as: :json
 
         expect(response.status).to eq(204)
