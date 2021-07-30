@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-RSpec.describe "Weapons", type: :request do
+RSpec.describe 'Weapons', type: :request do
   let!(:user) { FactoryBot.create(:user) }
-  let!(:weapon) { FactoryBot.create(:weapon)}
+  let!(:weapon) { FactoryBot.create(:weapon) }
 
-  describe "GET /index" do
+  describe 'GET /index' do
     it 'will not succeed if not signed in' do
       get '/api/v1/weapons', as: :json
 
@@ -25,9 +27,9 @@ RSpec.describe "Weapons", type: :request do
     end
   end
 
-  describe "GET /show" do
+  describe 'GET /show' do
     it 'will not succeed if not signed in' do
-      get '/api/v1/weapons/' + weapon.id.to_s, as: :json
+      get "/api/v1/weapons/#{weapon.id}", as: :json
 
       expect(response).to be_unauthorized
       expect(response.body).to include('Not Authenticated')
@@ -39,7 +41,7 @@ RSpec.describe "Weapons", type: :request do
       end
 
       it 'correctly gets request for individual weapon' do
-        get '/api/v1/weapons/' + weapon.id.to_s, as: :json
+        get "/api/v1/weapons/#{weapon.id}", as: :json
 
         expect(response).to be_successful
         expect(response.body).to include(weapon.name)
@@ -51,16 +53,16 @@ RSpec.describe "Weapons", type: :request do
     it 'will not succeed if not signed in' do
       post '/api/v1/weapons', params: {
         weapon: {
-          name: "Widowmaker",
-          weapon_type: "Sniper",
-          description: "A deadly sniper",
+          name: 'Widowmaker',
+          weapon_type: 'Sniper',
+          description: 'A deadly sniper',
           range: 200,
-          quality: "rare",
+          quality: 'rare',
           dice_type: 4,
           dice_qty: 2,
           proficiency: 2,
           ammo: 3,
-          damage_type: "kinetic"
+          damage_type: 'kinetic'
         }
       }
 
@@ -76,16 +78,16 @@ RSpec.describe "Weapons", type: :request do
       it 'is successful with valid params' do
         post '/api/v1/weapons', params: {
           weapon: {
-            name: "Widowmaker",
-            weapon_type: "Sniper",
-            description: "A deadly sniper",
+            name: 'Widowmaker',
+            weapon_type: 'Sniper',
+            description: 'A deadly sniper',
             range: 200,
-            quality: "rare",
+            quality: 'rare',
             dice_type: 4,
             dice_qty: 2,
             proficiency: 2,
             ammo: 3,
-            damage_type: "kinetic"
+            damage_type: 'kinetic'
           }
         }
 
@@ -99,14 +101,14 @@ RSpec.describe "Weapons", type: :request do
           weapon: {
             name: 24,
             weapon_type: nil,
-            description: "A deadly sniper",
+            description: 'A deadly sniper',
             range: 200,
-            quality: "rare",
+            quality: 'rare',
             dice_type: 4,
             dice_qty: nil,
             proficiency: 2,
             ammo: 3,
-            damage_type: "kinetic"
+            damage_type: 'kinetic'
           }
         }
 
@@ -117,11 +119,11 @@ RSpec.describe "Weapons", type: :request do
     end
   end
 
-  describe "PUT /update" do
+  describe 'PUT /update' do
     it 'will not succeed if not signed in' do
-      put '/api/v1/weapons/' + weapon.id.to_s,  params: {
+      put "/api/v1/weapons/#{weapon.id}", params: {
         weapon: {
-          name: "Edited Gun"
+          name: 'Edited Gun'
         }
       }
 
@@ -135,14 +137,14 @@ RSpec.describe "Weapons", type: :request do
       end
 
       it 'successfully edits weapon with valid changes' do
-        weapon_url = '/api/v1/weapons/' + weapon.id.to_s
+        weapon_url = "/api/v1/weapons/#{weapon.id}"
 
         expect(Weapon.count).to eq(1)
         expect(Weapon.last.name).to eq('Gun')
 
-        put weapon_url,  params: {
+        put weapon_url, params: {
           weapon: {
-            name: "Edited Gun"
+            name: 'Edited Gun'
           }
         }
 
@@ -152,12 +154,12 @@ RSpec.describe "Weapons", type: :request do
       end
 
       it 'will not edit weapon with invalid changes' do
-        weapon_url = '/api/v1/weapons/' + weapon.id.to_s
+        weapon_url = "/api/v1/weapons/#{weapon.id}"
 
         expect(Weapon.count).to eq(1)
         expect(Weapon.last.name).to eq('Gun')
 
-        put weapon_url,  params: {
+        put weapon_url, params: {
           weapon: {
             name: nil
           }
@@ -169,11 +171,11 @@ RSpec.describe "Weapons", type: :request do
     end
   end
 
-  describe "DELETE /destroy" do
-    let!(:weapon2) { FactoryBot.create(:weapon, name: 'DeleteMe')}
+  describe 'DELETE /destroy' do
+    let!(:weapon2) { FactoryBot.create(:weapon, name: 'DeleteMe') }
 
     it 'will not succeed if not signed in' do
-      delete '/api/v1/weapons/' + weapon2.id.to_s, as: :json
+      delete "/api/v1/weapons/#{weapon2.id}", as: :json
 
       expect(response).to be_unauthorized
       expect(response.body).to include('Not Authenticated')
@@ -184,12 +186,11 @@ RSpec.describe "Weapons", type: :request do
         post user_session_url, as: :json, params: { user: { email: user.email, password: 'SuperSecret123!' } }
       end
 
-
       it 'deletes a present record' do
         expect(Weapon.last.name).to eq('DeleteMe')
         expect(Weapon.count).to eq(2)
 
-        weapon_url = '/api/v1/weapons/' + weapon2.id.to_s
+        weapon_url = "/api/v1/weapons/#{weapon2.id}"
         delete weapon_url, as: :json
 
         expect(response.status).to eq(204)

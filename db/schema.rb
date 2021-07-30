@@ -10,10 +10,53 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_27_174409) do
+ActiveRecord::Schema.define(version: 2021_07_28_123410) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "characters", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "name"
+    t.string "description"
+    t.integer "strength", default: 20
+    t.integer "constitution", default: 20
+    t.integer "discipline", default: 20
+    t.integer "intelligence", default: 20
+    t.integer "sense", default: 20
+    t.integer "will", default: 20
+    t.integer "charm", default: 20
+    t.integer "speed", default: 1
+    t.integer "flying_speed", default: 0
+    t.integer "health"
+    t.integer "dodge"
+    t.integer "might"
+    t.integer "strike"
+    t.integer "athletics", default: 0
+    t.integer "intimidation_STR", default: 0
+    t.integer "force", default: 0
+    t.integer "acrobatics", default: 0
+    t.integer "precision", default: 0
+    t.integer "stealth", default: 0
+    t.integer "endurance", default: 0
+    t.integer "resistance", default: 0
+    t.integer "tech", default: 0
+    t.integer "science", default: 0
+    t.integer "investigation", default: 0
+    t.integer "perception", default: 0
+    t.integer "insight", default: 0
+    t.integer "persuasion", default: 0
+    t.integer "deception", default: 0
+    t.integer "intimidation_CHA", default: 0
+    t.integer "melee", default: 0
+    t.integer "short_range", default: 0
+    t.integer "medium_range", default: 0
+    t.integer "long_range", default: 0
+    t.integer "mutation_points", default: 0
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_characters_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "username"
@@ -43,4 +86,5 @@ ActiveRecord::Schema.define(version: 2021_07_27_174409) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "characters", "users"
 end

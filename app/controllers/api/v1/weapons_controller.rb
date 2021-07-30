@@ -3,7 +3,7 @@
 module Api
   module V1
     class WeaponsController < ApiController
-      before_action :set_weapon, only: [:show, :update, :destroy]
+      before_action :set_weapon, only: %i[show update destroy]
 
       # GET /weapons
       def index
@@ -41,15 +41,17 @@ module Api
       end
 
       private
-        # Use callbacks to share common setup or constraints between actions.
-        def set_weapon
-          @weapon = Weapon.find(params[:id])
-        end
 
-        # Only allow a trusted parameter "white list" through.
-        def weapon_params
-          params.require(:weapon).permit(:name, :weapon_type, :description, :range, :quality, :dice_type, :dice_qty, :proficiency, :ammo, :damage_type)
-        end
+      # Use callbacks to share common setup or constraints between actions.
+      def set_weapon
+        @weapon = Weapon.find(params[:id])
+      end
+
+      # Only allow a trusted parameter "white list" through.
+      def weapon_params
+        params.require(:weapon).permit(:name, :weapon_type, :description, :range, :quality, :dice_type, :dice_qty,
+                                       :proficiency, :ammo, :damage_type)
+      end
     end
   end
 end
