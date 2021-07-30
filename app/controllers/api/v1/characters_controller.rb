@@ -18,10 +18,10 @@ module Api
       # POST /characters
       # POST /characters.json
       def create
-        @character = Character.new(character_params)
+        @character = current_user.characters.new(character_params)
 
         if @character.save
-          render :show, status: :created, location: @character
+          render :show, status: :created, location: api_v1_character_path(@character.id)
         else
           render json: @character.errors, status: :unprocessable_entity
         end
@@ -31,7 +31,7 @@ module Api
       # PATCH/PUT /characters/1.json
       def update
         if @character.update(character_params)
-          render :show, status: :ok, location: @character
+          render :show, status: :ok, location: api_v1_character_path(@character.id)
         else
           render json: @character.errors, status: :unprocessable_entity
         end
@@ -47,12 +47,12 @@ module Api
 
       # Use callbacks to share common setup or constraints between actions.
       def set_character
-        @character = Character.find(params[:id])
+        @character = current_user.characters.find(params[:id])
       end
 
       # Only allow a list of trusted parameters through.
       def character_params
-        params.require(:weapon).permit(:user, :name, :description)
+        params.require(:character).permit(:name, :description, :id, :speed, :flying_speed, :health, :dodge, :might, :strength, :constitution, :discipline, :sense, :will, :charm, :intelligence, :strike, :mutation_points, :created_at, :updated_at)
       end
     end
   end
