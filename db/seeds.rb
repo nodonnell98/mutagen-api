@@ -23,5 +23,11 @@ Weapon.create(name: 'Stun gun', weapon_type: 'Pistol', description: 'A non-letha
 Weapon.create(name: 'Widowmaker', weapon_type: 'Sniper', description: 'A deadly sniper', range: '200', quality: 'rare',
               dice_type: '4', dice_qty: '2', damage_type: 'kinetic', ammo: '3', proficiency: '2')
 
-Character.create(name: 'Steve', description: 'A regular guy', user: user1)
-Character.create(name: 'Melissa', description: 'A regular gal', user: user2)
+Character.create(name: 'Steve', description: 'A regular guy', user: user1,  force: 1, long_range: 2, acrobatics: 1, stealth: 1)
+Character.create(name: 'Bob', description: 'An even more regular guy', user: user1)
+
+Character.create(name: 'Melissa', description: 'A regular gal', user: user2, melee: 1, tech: 2, investigation: 1, persuasion: 1)
+Character.create(name: 'Maple', description: 'An extra regular gal', user: user2)
+Character.create(name: 'Mavis', description: 'A not so regular gal', user: user2)
+Character.create(name: 'Maurene', description: 'An old gal', user: user2)
+Character.create(name: 'MX-29', description: 'A robot gal', user: user2)
