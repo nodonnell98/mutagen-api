@@ -28,9 +28,9 @@ json.skills do
   json.intelligence do
     json.tech character.tech
     json.science character.science
+    json.investigation character.investigation
   end
   json.sense do
-    json.investigation character.investigation
     json.perception character.perception
     json.insight character.insight
   end
