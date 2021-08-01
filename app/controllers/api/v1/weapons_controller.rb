@@ -50,7 +50,7 @@ module Api
       # Only allow a trusted parameter "white list" through.
       def weapon_params
         params.require(:weapon).permit(:name, :weapon_type, :description, :range, :quality, :dice_type, :dice_qty,
-                                       :proficiency, :ammo, :damage_type)
+                                       :proficiency, :ammo, :damage_type, :character_ids => [])
       end
     end
   end
