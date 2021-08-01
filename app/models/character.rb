@@ -5,5 +5,8 @@ class Character < ApplicationRecord
   has_many :character_weapons, dependent: :destroy
   has_many :weapons, through: :character_weapons
 
+  has_many :character_classifications, dependent: :destroy
+  has_one :classification, through: :character_classifications
+
   validates :name, presence: true
 end

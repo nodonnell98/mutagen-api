@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :characters, only: %i[index show create update destroy post]
       resources :weapons, only: %i[index show create update destroy post]
+      resources :classification, only: %i[index show create update destroy post]
       resources :users, only: %i[show update]
     end
   end
