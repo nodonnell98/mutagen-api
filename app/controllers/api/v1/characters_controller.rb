@@ -52,7 +52,7 @@ module Api
 
       # Only allow a list of trusted parameters through.
       def character_params
-        params.require(:character).permit(:name, :description, :id, :speed, :flying_speed, :health, :dodge, :might, :strength, :constitution, :discipline, :sense, :will, :charm, :intelligence, :strike, :mutation_points, :created_at, :updated_at, :weapon_ids => [])
+        params.require(:character).permit(:name, :description, :id, :speed, :flying_speed, :health, :dodge, :might, :strength, :constitution, :discipline, :sense, :will, :charm, :intelligence, :strike, :mutation_points, :created_at, :updated_at, :classification_ids => [], :weapon_ids => [])
       end
     end
   end
