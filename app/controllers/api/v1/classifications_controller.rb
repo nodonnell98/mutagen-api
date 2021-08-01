@@ -8,17 +8,19 @@ module Api
       # GET /classifications
       # GET /classifications.json
       def index
-        @classifications = Classifications.all
+        @classifications = Classification.all
       end
 
       # GET /classifications/1
       # GET /classifications/1.json
-      def show; end
+      def show;
+        render json: @classification
+      end
 
       # POST /classifications
       # POST /classifications.json
       def create
-        @classification = Classifications.new(classification_params)
+        @classification = Classification.new(classification_params)
 
         if @classification.save
           render :show, status: :created, location: api_v1_classification_path(@classification.id)
@@ -47,7 +49,7 @@ module Api
 
       # Use callbacks to share common setup or constraints between actions.
       def set_classification
-        @classification = Classifications.find(params[:id])
+        @classification = Classification.find(params[:id])
       end
 
       # Only allow a list of trusted parameters through.

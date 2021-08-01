@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_01_100840) do
+ActiveRecord::Schema.define(version: 2021_08_01_101942) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "character_classifications", force: :cascade do |t|
+    t.bigint "character_id", null: false
+    t.bigint "classification_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["character_id"], name: "index_character_classifications_on_character_id"
+    t.index ["classification_id"], name: "index_character_classifications_on_classification_id"
+  end
 
   create_table "character_weapons", force: :cascade do |t|
     t.bigint "character_id", null: false
@@ -104,6 +113,8 @@ ActiveRecord::Schema.define(version: 2021_08_01_100840) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "character_classifications", "characters"
+  add_foreign_key "character_classifications", "classifications"
   add_foreign_key "character_weapons", "characters"
   add_foreign_key "character_weapons", "weapons"
   add_foreign_key "characters", "users"

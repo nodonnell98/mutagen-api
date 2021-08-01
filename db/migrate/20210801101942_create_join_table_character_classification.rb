@@ -1,8 +1,10 @@
 class CreateJoinTableCharacterClassification < ActiveRecord::Migration[6.0]
   def change
-    create_join_table :characters, :classifications do |t|
-      t.index [:character_id, :classification_id]
-      t.index [:classification_id, :character_id]
+    create_table :character_classifications do |t|
+      t.references :character, null: false, foreign_key: true
+      t.references :classification, null: false, foreign_key: true
+
+      t.timestamps
     end
   end
 end

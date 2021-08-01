@@ -1,4 +1,3 @@
 # frozen_string_literal: true
 
-json.extract! weapon, :id, :name, :weapon_type, :range, :quality, :description, :dice_type, :dice_qty, :proficiency,
-              :ammo, :damage_type, :character_ids
+json.extract! classification, :id, :name, :description, :strike_stat, :might_stat, :dodge_stat, :gene_pool, :character_ids
