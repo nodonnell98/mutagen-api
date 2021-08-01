@@ -52,7 +52,7 @@ module Api
 
       # Only allow a list of trusted parameters through.
       def classification_params
-        params.require(:classification).permit(:name, :description, :id, :strike_stat, :might_stat, :dodge_stat, :gene_pool)
+        params.require(:classification).permit(:name, :description, :id, :strike_stat, :might_stat, :dodge_stat, :gene_pool, :character_ids => [])
       end
     end
   end
