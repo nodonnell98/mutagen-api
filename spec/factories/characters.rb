@@ -2,5 +2,7 @@
 
 FactoryBot.define do
   factory :character do
+    name { 'Bob' }
+    description { 'A guy' }
   end
 end
