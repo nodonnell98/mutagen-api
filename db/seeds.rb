@@ -21,8 +21,8 @@ Weapon.create(name: 'Widowmaker', weapon_type: 'Long Range', description: 'A dea
               dice_type: '4', dice_qty: '2', damage_type: 'Cryo', ammo: '3', proficiency: '2', character_ids: [character1.id])
 Weapon.create(name: 'Baseball Bat', weapon_type: 'Melee', description: 'A regular bat', range: '1', quality: 'common',
                 dice_type: '4', dice_qty: '2', damage_type: 'Kinetic', ammo: '1', proficiency: '3', character_ids: [character1.id])
-Weapon.create(name: 'Railgun', weapon_type: 'Medium Range', description: 'An experimental weapon', range: '30', quality: 'rare',
-                  dice_type: '8', dice_qty: '2', damage_type: 'Incendiary', ammo: '3', proficiency: '2', character_ids: [character1.id])
+Weapon.create(name: 'Knife', weapon_type: 'Short Range', description: 'A knife', range: '1', quality: 'common',
+                  dice_type: '8', dice_qty: '2', damage_type: 'Kinetic', ammo: '3', proficiency: '2', character_ids: [character1.id])
 Weapon.create(name: 'Frost Grenade', weapon_type: 'Short Range', description: 'All creatures hit by this roll for Force or Acrobatics, if the total is less than the damage of this grenade, they are frozen', range: '10', quality: 'rare',
                     dice_type: '4', dice_qty: '4', damage_type: 'Cryo', ammo: '1', proficiency: '0', character_ids: [character1.id])
 
