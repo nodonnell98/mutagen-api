@@ -8,7 +8,7 @@ module Api
       # GET /characters
       # GET /characters.json
       def index
-        @characters = current_user.characters.all
+        @characters = current_user.characters.order(name: :asc).all
       end
 
       # GET /characters/1

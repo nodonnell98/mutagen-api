@@ -8,7 +8,7 @@ module Api
       # GET /classifications
       # GET /classifications.json
       def index
-        @classifications = Classification.all
+        @classifications = Classification.order(name: :asc).all
       end
 
       # GET /classifications/1
