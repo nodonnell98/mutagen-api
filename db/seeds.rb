@@ -37,10 +37,10 @@ class4 = Classification.create(name: 'Chimera', description: 'Part human, part b
 Character.create(name: 'Maple', description: 'An extra regular gal', user: user2, classification_ids: [class1.id])
 Character.create(name: 'Harold', description: 'A not so regular gal', user: user2, classification_ids: [class2.id])
 Character.create(name: 'Arthur', description: 'An old gal', user: user2, classification_ids: [class3.id])
-Character.create(name: 'Benenedict', description: 'A robot gal', user: user2, classification_ids: [class4.id])
+Character.create(name: 'Benenedict', description: 'A robot gal', user: user2, classification_ids: [class4.id], favourite: true)
 Character.create(name: 'Zog', description: 'An extra regular gal', user: user2, classification_ids: [class1.id])
 Character.create(name: 'Arturis', description: 'A not so regular gal', user: user2, classification_ids: [class2.id])
-Character.create(name: 'Hercules', description: 'An old gal', user: user2, classification_ids: [class3.id])
+Character.create(name: 'Hercules', description: 'An old gal', user: user2, classification_ids: [class3.id], favourite: true)
 Character.create(name: 'Chad', description: 'A robot gal', user: user2, classification_ids: [class4.id])
 character2.classification_ids = [class4.id]
 
