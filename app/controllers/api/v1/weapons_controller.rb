@@ -7,7 +7,7 @@ module Api
 
       # GET /weapons
       def index
-        @weapons = Weapon.all
+        @weapons = Weapon.order(name: :asc).all
       end
 
       # GET /weapons/1

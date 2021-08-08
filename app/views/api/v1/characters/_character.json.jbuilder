@@ -26,18 +26,18 @@ json.skills do
     json.resistance character.resistance
   end
   json.intelligence do
-    json.tech character.tech
-    json.science character.science
     json.investigation character.investigation
+    json.science character.science
+    json.tech character.tech
   end
   json.sense do
-    json.perception character.perception
     json.insight character.insight
+    json.perception character.perception
   end
   json.charm do
-    json.persuasion character.persuasion
     json.deception character.deception
     json.intimidation character.intimidation_CHA
+    json.persuasion character.persuasion
   end
   json.weapons do
     json.melee character.melee
