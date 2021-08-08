@@ -8,7 +8,7 @@ module Api
       # GET /characters
       # GET /characters.json
       def index
-        @characters = current_user.characters.order(name: :asc).all
+        @characters = current_user.characters.order(favourite: :desc).order(name: :asc).all
       end
 
       # GET /characters/1
@@ -52,7 +52,7 @@ module Api
 
       # Only allow a list of trusted parameters through.
       def character_params
-        params.require(:character).permit(:name, :description, :id, :speed, :flying_speed, :health, :dodge, :might, :strength, :constitution, :discipline, :sense, :will, :charm, :intelligence, :strike, :mutation_points, :created_at, :updated_at, :classification_ids => [], :weapon_ids => [])
+        params.require(:character).permit(:name, :description, :id, :speed, :flying_speed, :favourite, :health, :dodge, :might, :strength, :constitution, :discipline, :sense, :will, :charm, :intelligence, :strike, :mutation_points, :created_at, :updated_at, :classification_ids => [], :weapon_ids => [])
       end
     end
   end

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-json.extract! character, :weapon_ids, :classification_ids, :id, :name, :description, :health, :dodge, :might, :strike, :speed, :flying_speed, :mutation_points, :created_at, :updated_at
+json.extract! character, :weapon_ids, :classification_ids, :id, :name, :description, :favourite, :health, :dodge, :might, :strike, :speed, :flying_speed, :mutation_points, :created_at, :updated_at
 json.traits do
   json.strength character.strength
   json.discipline character.discipline
