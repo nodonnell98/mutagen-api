@@ -1,4 +1,9 @@
+# frozen_string_literal: true
+
 class Weapon < ApplicationRecord
+  has_many :character_weapons
+  has_many :characters, through: :character_weapons
+
   validates :name, presence: true, uniqueness: true
   validates :weapon_type, presence: true
   validates :range, presence: true
