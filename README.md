@@ -1,24 +1,31 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Setup
 
-Things you may want to cover:
+This project has been dockerised.
 
-* Ruby version
+To build and run the application run the following commands
 
-* System dependencies
+``` docker-compose build```
 
-* Configuration
+next, if you wish to populate the database, seed data has been created and can be added with the command
 
-* Database creation
+```dcr --rm web bin/rails db:setup```
 
-* Database initialization
+This will create two users
+```
+email: admin@example.com
+password: SuperSecret123!
 
-* How to run the test suite
+email: user@example.com
+pasword: SuperSecret123!
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+The next step is to start the containers. The first is the database container and be initialised with:
 
-* Deployment instructions
+```docker-compose up -d db```
+Note: The -d tag lets the container run detatched in the background
 
-* ...
+Finally, run the command to serve the API on localhost:3000
+
+``` docker-compose up web```
