@@ -11,38 +11,24 @@ json.traits do
   json.charm character.charm
 end
 json.skills do
-  json.strength do
-    json.athletics character.athletics
-    json.intimidation character.intimidation_STR
-    json.force character.force
-  end
-  json.discipline do
-    json.acrobatics character.acrobatics
-    json.precision character.precision
-    json.stealth character.stealth
-  end
-  json.constitution do
-    json.endurance character.endurance
-    json.resistance character.resistance
-  end
-  json.intelligence do
-    json.investigation character.investigation
-    json.science character.science
-    json.tech character.tech
-  end
-  json.sense do
-    json.insight character.insight
-    json.perception character.perception
-  end
-  json.charm do
-    json.deception character.deception
-    json.intimidation character.intimidation_CHA
-    json.persuasion character.persuasion
-  end
-  json.weapons do
-    json.melee character.melee
-    json.short_range character.short_range
-    json.medium_range character.medium_range
-    json.long_range character.long_range
-  end
+  json.acrobatics character.acrobatics
+  json.athletics character.athletics
+  json.deception character.deception
+  json.endurance character.endurance
+  json.force character.force
+  json.insight character.insight
+  json.intimidation character.intimidation_STR
+  json.intimidation character.intimidation_CHA
+  json.investigation character.investigation
+  json.perception character.perception
+  json.persuasion character.persuasion
+  json.precision character.precision
+  json.resistance character.resistance
+  json.science character.science
+  json.stealth character.stealth
+  json.tech character.tech
+  json.melee character.melee
+  json.short_range character.short_range
+  json.medium_range character.medium_range
+  json.long_range character.long_range
 end
