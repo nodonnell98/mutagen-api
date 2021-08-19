@@ -44,3 +44,8 @@ Character.create(name: 'Hercules', description: 'An old gal', user: user2, class
 Character.create(name: 'Chad', description: 'A robot gal', user: user2, classification_ids: [class4.id])
 character2.classification_ids = [class4.id]
 
+50.times do |i|
+  Weapon.create!(name: "ZWeapon" + i.to_s, weapon_type: 'Melee', description: 'A knife', range: '1', quality: 'Basic',
+    dice_type: '8', dice_qty: '2', damage_type: 'Kinetic', ammo: '3', proficiency: '2', character_ids: [character1.id])
+end
+
