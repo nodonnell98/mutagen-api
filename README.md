@@ -10,7 +10,7 @@ To build and run the application run the following commands
 
 next, if you wish to populate the database, seed data has been created and can be added with the command
 
-```dcr --rm web bin/rails db:setup```
+```docker-compose run --rm web bin/rails db:setup```
 
 This will create two users
 ```
